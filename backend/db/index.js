@@ -12,8 +12,8 @@ const pool = new Pool({
   ssl: isProd,
 })
 
-async function query(text, params, callback) {
-  return pool.query(text, params, callback)
+function query(text, params) {
+  return pool.query(text, params)
 }
 
 export default { pool, query }
