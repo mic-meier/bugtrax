@@ -1,11 +1,24 @@
+import bodyParser from 'body-parser'
+import cors from 'cors'
 import express from 'express'
+
+import db from './db/index.js'
+
 const app = express()
 
-app.get('/', (req, res) => {
-  res.json({ content: 'Hello World' })
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
+
+app.get('/', (req, res, next) => {
+  db.query('SELECT * FROM test', null, (err, result) => {
+    if (err) {
+      return next(err)
+    }
+    res.send(result.rows)
+  })
 })
 
-const PORT = 3001
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+app.listen(process.env.PORT || 3001, () => {
+  console.log(`Server listening`)
 })
