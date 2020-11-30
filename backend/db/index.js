@@ -1,19 +1,16 @@
 import dotenv from 'dotenv'
 dotenv.config()
-import pkg from 'pg'
-const { Pool } = pkg
-
-const isProd = process.env.NODE_ENV === 'production'
+import { Sequelize } from 'sequelize'
 
 const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
 
-const pool = new Pool({
-  connectionString: isProd ? process.env.DATABASE_URL : connectionString,
-  ssl: isProd,
-})
+const sequelize = new Sequelize(connectionString)
 
-function query(text, params) {
-  return pool.query(text, params)
+try {
+  await sequelize.authenticate()
+  console.log('Connected to DB')
+} catch (e) {
+  console.error('Unable to connect to DB', e)
 }
 
-export default { pool, query }
+export default sequelize
