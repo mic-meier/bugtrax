@@ -1,7 +1,7 @@
-import test from './test.js'
+import prot from './protected.js'
 
 const mountRoutes = (app) => {
-  app.use('/test', test)
+  app.use('/protected', prot)
 }
 
 export default mountRoutes
