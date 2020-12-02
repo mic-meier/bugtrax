@@ -4,14 +4,21 @@ import ReactDOM from 'react-dom'
 
 import App from './App'
 
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
+const scope = process.env.REAC_APP_SCOPE
+const audience = process.env.REACT_APP_AUDIENCE
+
+console.log('domain', domain)
+
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-5ei70w5d.eu.auth0.com"
-      clientId="WlqH7S991dotJhTP0Zgq8Eqr6NapNZP6"
+      domain={domain}
+      clientId={clientID}
       redirectUri={window.location.origin}
-      audience="bugtrax/api"
-      scope="read:secured"
+      audience={audience}
+      scope={scope}
     >
       <App />
     </Auth0Provider>
