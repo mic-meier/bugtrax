@@ -13,31 +13,40 @@ function LogoutButton() {
 
 function AuthenticatedApp() {
   const { user, isLoading, getAccessTokenSilently } = useAuth0()
-  console.log('user', user)
 
   React.useEffect(() => {
-    const getApiResponse = async () => {
+    const registerUserInDB = async () => {
       try {
         const accessToken = await getAccessTokenSilently({
           audience: `bugtrax/api`,
           scope: 'read:secured',
         })
 
-        const apiRespone = await fetch('http://localhost:3001/protected', {
+        const respone = await fetch(`http://localhost:3001/users/${user.sub}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         })
 
-        const { message } = await apiRespone.json()
-        console.log('message', message)
+        const userInDB = await respone.json()
+
+        if (!userInDB) {
+          await fetch('http://localhost:3001/users', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+          })
+        }
       } catch (e) {
-        console.log(e.message)
+        console.log(e)
       }
     }
 
-    getApiResponse()
-  }, [])
+    registerUserInDB()
+  }, [getAccessTokenSilently, user])
 
   if (isLoading) {
     return <div>Loading..</div>
