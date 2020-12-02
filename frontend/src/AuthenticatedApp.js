@@ -13,6 +13,7 @@ function LogoutButton() {
 
 function AuthenticatedApp() {
   const { user, isLoading, getAccessTokenSilently } = useAuth0()
+  console.log('user', user)
 
   React.useEffect(() => {
     const getApiResponse = async () => {
