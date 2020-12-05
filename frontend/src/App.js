@@ -1,12 +1,18 @@
 import { useAuth0 } from '@auth0/auth0-react'
 
-import AuthenticatedApp from './AuthenticatedApp'
-import UnauthenticatedApp from './UnauthenticatedApp'
+import AuthenticationButton from './components/authentication-button'
 
 function App() {
   const { isAuthenticated } = useAuth0()
 
-  return isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />
+  return (
+    <div>
+      <div>
+        <AuthenticationButton />
+      </div>
+      <div>{isAuthenticated ? 'authenticated' : 'not authenticated'}</div>
+    </div>
+  )
 }
 
 export default App
