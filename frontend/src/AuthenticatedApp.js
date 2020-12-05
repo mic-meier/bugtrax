@@ -1,11 +1,17 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
 import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
+import { jsx } from 'theme-ui'
 
 function LogoutButton() {
   const { logout } = useAuth0()
 
   return (
-    <button onClick={() => logout({ returnTo: window.location.origin })}>
+    <button
+      sx={{ variant: 'buttons.simple' }}
+      onClick={() => logout({ returnTo: window.location.origin })}
+    >
       Log Out
     </button>
   )
@@ -18,17 +24,20 @@ function AuthenticatedApp() {
     const registerUserInDB = async () => {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: `bugtrax/api`,
+          audience: process.env.REACT_APP_API_AUDIENCE,
           scope: 'read:secured',
         })
 
-        const respone = await fetch(`http://localhost:3001/users/${user.sub}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
+        const response = await fetch(
+          `http://localhost:3001/users/${user.sub}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
 
-        const userInDB = await respone.json()
+        const userInDB = await response.json()
 
         if (!userInDB) {
           await fetch('http://localhost:3001/users', {
