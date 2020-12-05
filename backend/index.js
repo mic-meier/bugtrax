@@ -12,10 +12,10 @@ const jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://dev-5ei70w5d.eu.auth0.com/.well-known/jwks.json',
+    jwksUri: process.env.JWKS_URI,
   }),
-  audience: 'bugtrax/api',
-  issuer: 'https://dev-5ei70w5d.eu.auth0.com/',
+  audience: process.env.API_AUDIENCE,
+  issuer: process.env.API_ISSUER,
   algorithms: ['RS256'],
 })
 

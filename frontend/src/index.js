@@ -9,8 +9,6 @@ const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
 const scope = process.env.REAC_APP_SCOPE
 const audience = process.env.REACT_APP_AUDIENCE
 
-console.log('domain', domain)
-
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
