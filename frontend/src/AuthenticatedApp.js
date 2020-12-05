@@ -18,17 +18,20 @@ function AuthenticatedApp() {
     const registerUserInDB = async () => {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: `bugtrax/api`,
+          audience: process.env.REACT_APP_API_AUDIENCE,
           scope: 'read:secured',
         })
 
-        const respone = await fetch(`http://localhost:3001/users/${user.sub}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
+        const response = await fetch(
+          `http://localhost:3001/users/${user.sub}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
 
-        const userInDB = await respone.json()
+        const userInDB = await response.json()
 
         if (!userInDB) {
           await fetch('http://localhost:3001/users', {

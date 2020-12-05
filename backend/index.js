@@ -7,15 +7,19 @@ import jwks from 'jwks-rsa'
 import mountRoutes from './routes/index.js'
 const app = express()
 
+const audience = process.env.API_AUDIENCE
+const issuer = process.env.API_ISSUER
+const jwksUri = process.env.JWKS_URI
+
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: process.env.JWKS_URI,
+    jwksUri: jwksUri,
   }),
-  audience: process.env.API_AUDIENCE,
-  issuer: process.env.API_ISSUER,
+  audience: audience,
+  issuer: issuer,
   algorithms: ['RS256'],
 })
 

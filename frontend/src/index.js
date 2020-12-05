@@ -6,8 +6,8 @@ import App from './App'
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN
 const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
-const scope = process.env.REAC_APP_SCOPE
-const audience = process.env.REACT_APP_AUDIENCE
+const scope = process.env.REACT_APP_API_SCOPE
+const audience = process.env.REACT_APP_API_AUDIENCE
 
 ReactDOM.render(
   <React.StrictMode>
