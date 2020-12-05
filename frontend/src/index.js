@@ -1,28 +1,20 @@
-import { Auth0Provider } from '@auth0/auth0-react'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'theme-ui'
 
-import App from './App'
+import App from './app'
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history'
 import theme from './theme/index'
-
-const domain = process.env.REACT_APP_AUTH0_DOMAIN
-const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
-const scope = process.env.REACT_APP_API_SCOPE
-const audience = process.env.REACT_APP_API_AUDIENCE
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Auth0Provider
-        domain={domain}
-        clientId={clientID}
-        redirectUri={window.location.origin}
-        audience={audience}
-        scope={scope}
-      >
-        <App />
-      </Auth0Provider>
+      <Router>
+        <Auth0ProviderWithHistory>
+          <App />
+        </Auth0ProviderWithHistory>
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
