@@ -6,6 +6,7 @@ const router = new Router()
 
 router.get('/:sub', async (req, res) => {
   const sub = req.params.sub
+  console.log('sub', sub)
   try {
     const user = await User.findOne({
       where: {

@@ -15,15 +15,24 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+  const { body } = req
   try {
-    const project = await User.create({
-      sub: req.body.sub,
-      email: req.body.email,
+    const user = await User.findOne({
+      where: {
+        sub: body.sub,
+      },
     })
-    console.log(`user ${req.body.email} registered`)
+
+    const project = await user.createProject({
+      name: body.name,
+      key: body.key,
+      description: body.description,
+    })
+
     res.status(200).json(project)
   } catch (e) {
     console.error('Error:', e.message)
+    res.status(403).json({ Error: e.message })
   }
 })
 

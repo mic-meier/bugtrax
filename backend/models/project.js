@@ -1,9 +1,14 @@
-import pkg from 'sequelize'
+import pkg, { Sequelize } from 'sequelize'
 const { DataTypes } = pkg
-
 import sequelize from '../db/index.js'
 
 const Project = sequelize.define('Project', {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    unique: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
