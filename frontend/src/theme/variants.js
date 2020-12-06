@@ -19,7 +19,7 @@ export default {
       fontFamily: 'body',
       fontSize: 2,
       ':hover': {
-        backgroundColor: 'secondary',
+        backgroundColor: 'indigo.1',
       },
     },
   },
