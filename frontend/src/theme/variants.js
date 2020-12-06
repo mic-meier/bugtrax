@@ -16,6 +16,7 @@ export default {
       p: 1,
       borderRadius: 'sm',
       fontWeight: 'medium',
+      fontFamily: 'body',
       fontSize: 2,
       ':hover': {
         backgroundColor: 'secondary',

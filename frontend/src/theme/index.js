@@ -11,6 +11,7 @@ import lineHeights from './lineHeights'
 import radii from './radii'
 import sizes from './sizes'
 import space from './spaces'
+import styles from './styles'
 import transforms from './transforms'
 import transitions from './transitions'
 import variants from './variants'
@@ -33,5 +34,6 @@ export default {
   inputs,
   transforms,
   transitions,
+  styles,
   ...variants,
 }
