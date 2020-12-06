@@ -19,7 +19,7 @@ function SignupButton() {
         mx: 2,
       }}
     >
-      Register
+      Sign Up
     </button>
   )
 }
