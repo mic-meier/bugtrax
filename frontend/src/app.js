@@ -43,8 +43,9 @@ function App() {
         console.log(e)
       }
     }
-
-    registerUserInDB()
+    if (user) {
+      registerUserInDB()
+    }
   }, [getAccessTokenSilently, user])
 
   if (isLoading) {
