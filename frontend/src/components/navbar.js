@@ -7,6 +7,7 @@ import { jsx } from 'theme-ui'
 
 import colors from '../theme/colors'
 import AuthenticationButton from './authentication-button'
+import Avatar from './avatar'
 
 const MainNav = () => {
   return (
@@ -52,7 +53,7 @@ const AuthNav = () => {
   const { user } = useAuth0()
   return (
     <div>
-      {user ? <span sx={{ p: 1, m: 1 }}>{user.nickname}</span> : null}
+      {user ? <Avatar /> : null}
       <AuthenticationButton />
     </div>
   )

@@ -10,6 +10,8 @@ import { Home, Profile, Projects } from './views'
 function App() {
   const { user, isLoading, getAccessTokenSilently } = useAuth0()
 
+  console.log('user', user)
+
   useEffect(() => {
     const registerUserInDB = async () => {
       try {
