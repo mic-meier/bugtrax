@@ -2,6 +2,8 @@ export default {
   transparent: 'transparent',
   black: '#000',
   white: '#fff',
+  text: 'hsl(0, 0%, 13%)',
+  background: '#fff',
   green: [
     'hsl(125, 65%, 93%)',
     'hsl(126, 49%, 84%)',
@@ -63,8 +65,6 @@ export default {
     'hsl(43, 86%, 17%)',
   ],
   grayDark: 'hsl(0, 0%, 23%)',
-  text: 'hsl(0, 0%, 13%)',
-  background: 'hsl(0, 0%, 97%)',
   primary: 'hsl(123, 35%, 51%)',
   primaryHover: 'hsl(123, 38%, 63%)',
   secondary: 'hsl(0, 0%, 62%)',

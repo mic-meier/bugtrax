@@ -7,7 +7,14 @@ import { jsx } from 'theme-ui'
 function LoginButton() {
   const { loginWithPopup } = useAuth0()
 
-  return <button onClick={() => loginWithPopup()}>Log In</button>
+  return (
+    <button
+      onClick={() => loginWithPopup()}
+      sx={{ variant: 'buttons.outline' }}
+    >
+      Log In
+    </button>
+  )
 }
 
 export default LoginButton

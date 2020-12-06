@@ -14,6 +14,7 @@ function LogoutButton() {
           returnTo: window.location.origin,
         })
       }
+      sx={{ variant: 'buttons.outline' }}
     >
       Log Out
     </button>
