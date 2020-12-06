@@ -1,20 +1,26 @@
 import pkg from 'sequelize'
 const { DataTypes } = pkg
-import sequelize from '../db/index.js'
-import Project from './project.js'
 
-const User = sequelize.define(
-  'User',
+import sequelize from '../db/index.js'
+
+const Project = sequelize.define(
+  'Project',
   {
-    sub: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
       unique: true,
     },
-    email: {
+    key: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+    },
+    description: {
+      type: DataTypes.STRING,
+    },
+    comment: {
+      type: DataTypes.TEXT,
     },
   },
   {
@@ -22,6 +28,4 @@ const User = sequelize.define(
   }
 )
 
-User.hasMany(Project)
-
-export default User
+export default Project
