@@ -14,6 +14,10 @@ function SignupButton() {
           screen_hint: 'signup',
         })
       }
+      sx={{
+        variant: 'buttons.outline',
+        mx: 2,
+      }}
     >
       Register
     </button>

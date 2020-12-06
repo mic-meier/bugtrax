@@ -90,4 +90,5 @@ export default {
   ],
   primary: 'hsl(227, 42%, 51%)',
   secondary: 'hsl(14, 89%, 55%)',
+  primaryHover: 'hsl(227, 50%, 59%)',
 }

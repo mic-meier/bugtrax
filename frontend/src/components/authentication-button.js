@@ -6,11 +6,19 @@ import { jsx } from 'theme-ui'
 
 import LoginButton from './login-button'
 import Logoutbutton from './logout-button'
+import SignupButton from './signup-button'
 
 function AuthenticationButton() {
   const { isAuthenticated } = useAuth0()
 
-  return isAuthenticated ? <Logoutbutton /> : <LoginButton />
+  return isAuthenticated ? (
+    <Logoutbutton />
+  ) : (
+    <div>
+      <SignupButton />
+      <LoginButton />
+    </div>
+  )
 }
 
 export default AuthenticationButton

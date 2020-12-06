@@ -10,7 +10,7 @@ function LoginButton() {
   return (
     <button
       onClick={() => loginWithPopup()}
-      sx={{ variant: 'buttons.outline' }}
+      sx={{ variant: 'buttons.bordered', mx: 2 }}
     >
       Log In
     </button>
