@@ -4,7 +4,13 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 
 function Home() {
-  return <div>Home</div>
+  return (
+    <div>
+      <h1>Home</h1>
+      <p>Jira Test</p>
+      <p>Once more</p>
+    </div>
+  )
 }
 
 export default Home
