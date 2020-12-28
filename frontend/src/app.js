@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import ProtectedRoute from './auth/protected-route'
 import Loading from './components/loading'
 import NavBar from './components/navbar'
+import { client } from './utils/api-client'
 import { Home, Profile, Projects } from './views'
 
 function App() {
@@ -20,26 +21,14 @@ function App() {
           scope: 'read:secured',
         })
 
-        const response = await fetch(
-          `http://localhost:3001/users/${user.sub}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        )
+        const response = await client(`users/${user.sub}`, {
+          token: accessToken,
+        })
 
         const userInDB = await response.json()
 
         if (!userInDB) {
-          await fetch('http://localhost:3001/users', {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-          })
+          await client('users', { data: user, token: accessToken })
         }
       } catch (e) {
         console.log(e)
