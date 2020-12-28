@@ -14,19 +14,19 @@ function App() {
   useEffect(() => {
     const registerUserInDB = async () => {
       try {
-        const accessToken = await getAccessTokenSilently({
+        const token = await getAccessTokenSilently({
           audience: process.env.REACT_APP_API_AUDIENCE,
           scope: 'read:secured',
         })
 
         const response = await client(`users/${user.sub}`, {
-          token: accessToken,
+          token: token,
         })
 
         const userInDB = await response.json()
 
         if (!userInDB) {
-          await client('users', { data: user, token: accessToken })
+          await client('users', { data: user, token: token })
         }
       } catch (e) {
         console.log(e)
@@ -46,8 +46,12 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/" exact component={Home} />
-        <ProtectedRoute path="/projects" component={Projects} />
-        <ProtectedRoute path="/profile" component={Profile} />
+        <ProtectedRoute path="/projects">
+          <Projects />
+        </ProtectedRoute>
+        <ProtectedRoute path="/profile">
+          <Profile />
+        </ProtectedRoute>
       </Switch>
     </div>
   )
