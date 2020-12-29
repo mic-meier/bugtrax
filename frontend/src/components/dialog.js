@@ -1,3 +1,5 @@
+import '@reach/dialog/styles.css'
+
 import styled from '@emotion/styled/macro'
 import { Dialog as ReachDialog } from '@reach/dialog'
 
