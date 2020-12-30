@@ -9,6 +9,7 @@ import inputs from './inputs'
 import letterSpacings from './letterSpacings'
 import lineHeights from './lineHeights'
 import radii from './radii'
+import shadows from './shadows'
 import sizes from './sizes'
 import space from './spaces'
 import styles from './styles'
@@ -34,6 +35,7 @@ export default {
   inputs,
   transforms,
   transitions,
+  shadows,
   styles,
   ...variants,
 }

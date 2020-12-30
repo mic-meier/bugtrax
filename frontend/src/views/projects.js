@@ -27,17 +27,17 @@ function ProjectForm({ onSubmit, submitButton }) {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div sx={{ display: 'flex', flexDirection: 'column' }}>
         <label htmlFor="name">Project Name</label>
-        <input id="name" />
+        <input id="name" sx={{ variant: 'inputs.underline' }} />
       </div>
       <div>
         <label htmlFor="key">Project Key</label>
-        <input id="key" />
+        <input id="key" sx={{ variant: 'inputs.shadow' }} />
       </div>
       <div>
         <label htmlFor="description">Project Name</label>
-        <input id="description" />
+        <input id="description" sx={{ variant: 'inputs.indline' }} />
       </div>
       <div>
         {React.cloneElement(
