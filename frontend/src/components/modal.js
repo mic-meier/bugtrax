@@ -51,7 +51,18 @@ function ModalContents({ title, children, ...props }) {
           </button>
         </ModalDismissButton>
       </div>
-      <h3 sx={{ textAlign: 'center', fontSize: 2 }}>{title}</h3>
+      <h3
+        sx={{
+          textAlign: 'left',
+          fontSize: 3,
+          fontWeight: 'semibold',
+          pb: 3,
+          mb: 6,
+          mt: 0,
+        }}
+      >
+        {title}
+      </h3>
       {children}
     </ModalContentsBase>
   )

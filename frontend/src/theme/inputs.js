@@ -39,7 +39,7 @@ export default {
     borderRadius: '0px',
     appearance: 'none',
     lineHeight: 'tight',
-    backgroundColor: 'gray.1',
+    backgroundColor: 'gray.0',
     border: 'none',
     borderBottomWidth: '2px',
     borderBottomStyle: 'solid',

@@ -5,6 +5,12 @@ import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import { jsx } from 'theme-ui'
 
+import {
+  FormGroup,
+  FormInput,
+  FormLabel,
+  FormTextarea,
+} from '../components/lib'
 import { Loading, Spinner } from '../components/loading'
 import { Modal, ModalContents, ModalOpenButton } from '../components/modal'
 import { client } from '../utils/api-client'
@@ -27,18 +33,18 @@ function ProjectForm({ onSubmit, submitButton }) {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <div sx={{ display: 'flex', flexDirection: 'column' }}>
-        <label htmlFor="name">Project Name</label>
-        <input id="name" sx={{ variant: 'inputs.underline' }} />
-      </div>
-      <div>
-        <label htmlFor="key">Project Key</label>
-        <input id="key" sx={{ variant: 'inputs.shadow' }} />
-      </div>
-      <div>
-        <label htmlFor="description">Project Name</label>
-        <input id="description" sx={{ variant: 'inputs.indline' }} />
-      </div>
+      <FormGroup>
+        <FormLabel htmlFor="name">Project Name</FormLabel>
+        <FormInput id="name" />
+      </FormGroup>
+      <FormGroup>
+        <FormLabel htmlFor="key">Project Key</FormLabel>
+        <FormInput id="key" />
+      </FormGroup>
+      <FormGroup>
+        <FormLabel htmlFor="description">Project Description</FormLabel>
+        <FormTextarea id="description" />
+      </FormGroup>
       <div>
         {React.cloneElement(
           submitButton,
